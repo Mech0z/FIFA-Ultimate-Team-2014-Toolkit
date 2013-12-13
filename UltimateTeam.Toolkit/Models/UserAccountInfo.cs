@@ -4,6 +4,6 @@ namespace UltimateTeam.Toolkit.Models
 {
     public class UserAccountInfo
     {
-        public IEnumerable<Persona> Personas { get; set; }
+        public List<Persona> Personas { get; set; }
     }
 }
