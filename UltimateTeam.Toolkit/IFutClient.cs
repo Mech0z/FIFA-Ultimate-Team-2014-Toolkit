@@ -16,6 +16,8 @@ namespace UltimateTeam.Toolkit
 
         Task<AuctionResponse> PlaceBidAsync(AuctionInfo auctionInfo, uint bidAmount = 0);
 
+        Task<Item> GetItemAsync(long resourceId);
+
         Task<Item> GetItemAsync(AuctionInfo auctionInfo);
 
         Task<byte[]> GetPlayerImageAsync(AuctionInfo auctionInfo);

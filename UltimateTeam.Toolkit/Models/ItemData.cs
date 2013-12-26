@@ -33,7 +33,7 @@ namespace UltimateTeam.Toolkit.Models
 
         public uint LastSalePrice { get; set; }
 
-		public uint LeagueId { get; set; }
+        public uint LeagueId { get; set; }
 
         public ushort LifeTimeAssists { get; set; }
 

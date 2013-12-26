@@ -7,12 +7,11 @@ namespace UltimateTeam.Toolkit.Requests
 {
     internal class ItemRequest : FutRequestBase, IFutRequest<Item>
     {
-        private readonly AuctionInfo _auctionInfo;
+        private readonly long _baseId;
 
-        public ItemRequest(AuctionInfo auctionInfo)
+        public ItemRequest(long resourceId)
         {
-            auctionInfo.ThrowIfNullArgument();
-            _auctionInfo = auctionInfo;
+            _baseId = resourceId.CalculateBaseId();
         }
 
         public async Task<Item> PerformRequestAsync()
@@ -23,7 +22,7 @@ namespace UltimateTeam.Toolkit.Requests
             AddAcceptEncodingHeader();
             AddAcceptLanguageHeader();
             var itemResponseMessage = await HttpClient
-                .GetAsync(string.Format(Resources.Item, _auctionInfo.CalculateBaseId()))
+                .GetAsync(string.Format(Resources.Item, _baseId))
                 .ConfigureAwait(false);
             var itemWrapper = await Deserialize<ItemWrapper>(itemResponseMessage);
 
