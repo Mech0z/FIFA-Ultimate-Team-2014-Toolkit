@@ -45,18 +45,16 @@ namespace UltimateTeam.Toolkit
             return _requestFactories.PlaceBidRequestFactory(auctionInfo, bidAmount).PerformRequestAsync();
         }
 
-        public Task<Item> GetItemAsync(ItemData itemData)
+        public Task<Item> GetItemAsync(long resourceId)
         {
-            itemData.ThrowIfNullArgument();
-
-            return _requestFactories.ItemByItemDataRequestFactory(itemData).PerformRequestAsync();
+            return _requestFactories.ItemRequestFactory(resourceId).PerformRequestAsync();
         }
 
         public Task<Item> GetItemAsync(AuctionInfo auctionInfo)
         {
             auctionInfo.ThrowIfNullArgument();
 
-            return _requestFactories.ItemRequestFactory(auctionInfo).PerformRequestAsync();
+            return GetItemAsync(auctionInfo.ItemData.ResourceId);
         }
 
         public Task<byte[]> GetPlayerImageAsync(AuctionInfo auctionInfo)

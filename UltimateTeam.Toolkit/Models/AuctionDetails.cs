@@ -16,7 +16,7 @@ namespace UltimateTeam.Toolkit.Models
         {
             if (itemDataId < 1) throw new ArgumentException("Invalid itemDataId", "itemDataId");
             if (startingBid < 150) throw new ArgumentException("Starting bid can't be less than 150", "startingBid");
-            if (buyNowPrice != 0 && buyNowPrice < startingBid) throw new ArgumentException("Buy now price can't be lower than starting bid", "buyNowPrice");
+            if (buyNowPrice != 0 && buyNowPrice <= startingBid) throw new ArgumentException("Buy now price must be higher than starting bid", "buyNowPrice");
 
             ItemDataId = itemDataId;
             AuctionDuration = auctionDuration;

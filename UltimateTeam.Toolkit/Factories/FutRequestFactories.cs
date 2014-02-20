@@ -27,7 +27,7 @@ namespace UltimateTeam.Toolkit.Factories
 
         private Func<AuctionInfo, uint, IFutRequest<AuctionResponse>> _placeBidRequestFactory;
 
-        private Func<AuctionInfo, IFutRequest<Item>> _itemRequestFactory;
+        private Func<long, IFutRequest<Item>> _itemRequestFactory;
 
         private Func<ItemData, IFutRequest<Item>> _itemByItemDataRequestFactory;
 
@@ -152,26 +152,7 @@ namespace UltimateTeam.Toolkit.Factories
             }
         }
 
-        public Func<ItemData, IFutRequest<Item>> ItemByItemDataRequestFactory
-        {
-            get
-            {
-                return _itemByItemDataRequestFactory ?? (_itemByItemDataRequestFactory = info => new ItemRequest(info)
-                {
-                    PhishingToken = PhishingToken,
-                    SessionId = SessionId,
-                    HttpClient = HttpClient,
-                    Resources = _resources
-                });
-            }
-            set
-            {
-                value.ThrowIfNullArgument();
-                _itemByItemDataRequestFactory = value;
-            }
-        }
-
-        public Func<AuctionInfo, IFutRequest<Item>> ItemRequestFactory
+        public Func<long, IFutRequest<Item>> ItemRequestFactory
         {
             get
             {
