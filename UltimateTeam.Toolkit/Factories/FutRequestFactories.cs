@@ -29,6 +29,8 @@ namespace UltimateTeam.Toolkit.Factories
 
         private Func<AuctionInfo, IFutRequest<Item>> _itemRequestFactory;
 
+        private Func<ItemData, IFutRequest<Item>> _itemByItemDataRequestFactory;
+
         private Func<AuctionInfo, IFutRequest<byte[]>> _playerImageRequestFactory;
 
         private Func<IEnumerable<long>, IFutRequest<AuctionResponse>> _tradeStatusRequestFactory;
@@ -52,6 +54,8 @@ namespace UltimateTeam.Toolkit.Factories
         private Func<IEnumerable<long>, IFutRequest<QuickSellResponse>> _quickSellRequestFactory;
 
         private Func<IFutRequest<PileSizeResponse>> _pileSizeRequestFactory;
+
+        private Func<ClubItemSearchParameters, IFutRequest<ClubItemsResponse>> _clubItemsRequestFactory;
 
         public string PhishingToken
         {
@@ -145,6 +149,25 @@ namespace UltimateTeam.Toolkit.Factories
             {
                 value.ThrowIfNullArgument();
                 _placeBidRequestFactory = value;
+            }
+        }
+
+        public Func<ItemData, IFutRequest<Item>> ItemByItemDataRequestFactory
+        {
+            get
+            {
+                return _itemByItemDataRequestFactory ?? (_itemByItemDataRequestFactory = info => new ItemRequest(info)
+                {
+                    PhishingToken = PhishingToken,
+                    SessionId = SessionId,
+                    HttpClient = HttpClient,
+                    Resources = _resources
+                });
+            }
+            set
+            {
+                value.ThrowIfNullArgument();
+                _itemByItemDataRequestFactory = value;
             }
         }
 
@@ -393,6 +416,25 @@ namespace UltimateTeam.Toolkit.Factories
             {
                 value.ThrowIfNullArgument();
                 _pileSizeRequestFactory = value;
+            }
+        }
+
+        public Func<ClubItemSearchParameters, IFutRequest<ClubItemsResponse>> ClubItemsRequestFactory
+        {
+            get
+            {
+                return _clubItemsRequestFactory ?? (_clubItemsRequestFactory = clubItemSearchParameters => new ClubItemsRequest(clubItemSearchParameters)
+                {
+                    PhishingToken = PhishingToken,
+                    SessionId = SessionId,
+                    HttpClient = HttpClient,
+                    Resources = _resources
+                });
+            }
+            set
+            {
+                value.ThrowIfNullArgument();
+                _clubItemsRequestFactory = value;
             }
         }
     }

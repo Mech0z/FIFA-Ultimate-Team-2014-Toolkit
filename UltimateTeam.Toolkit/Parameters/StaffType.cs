@@ -8,7 +8,7 @@ namespace UltimateTeam.Toolkit.Parameters
 
         public const string HeadCoach = "headCoach";
 
-        public const string GkCoach = "GkCoach";
+        public const string GkCoach = "GKCoach";
 
         public const string FitnessCoach = "fitnessCoach";
 
@@ -24,7 +24,7 @@ namespace UltimateTeam.Toolkit.Parameters
         {
             yield return new StaffType("manager", Manager);
             yield return new StaffType("headCoach", HeadCoach);
-            yield return new StaffType("GkCoach", GkCoach);
+            yield return new StaffType("GKCoach", GkCoach);
             yield return new StaffType("fitnessCoach", FitnessCoach);
             yield return new StaffType("physio", PhysioCoach);
  

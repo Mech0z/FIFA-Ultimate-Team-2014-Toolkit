@@ -45,6 +45,13 @@ namespace UltimateTeam.Toolkit
             return _requestFactories.PlaceBidRequestFactory(auctionInfo, bidAmount).PerformRequestAsync();
         }
 
+        public Task<Item> GetItemAsync(ItemData itemData)
+        {
+            itemData.ThrowIfNullArgument();
+
+            return _requestFactories.ItemByItemDataRequestFactory(itemData).PerformRequestAsync();
+        }
+
         public Task<Item> GetItemAsync(AuctionInfo auctionInfo)
         {
             auctionInfo.ThrowIfNullArgument();
@@ -139,6 +146,11 @@ namespace UltimateTeam.Toolkit
                     throw new ArgumentException(string.Format("ItemId {0} is definitely not valid", itemId), "itemId");
             
             return _requestFactories.QuickSellRequestFactory(itemIds).PerformRequestAsync();
+        }
+
+        public Task<ClubItemsResponse> GetClubItemsAsync(ClubItemSearchParameters clubItemSearchParameters)
+        {
+            return _requestFactories.ClubItemsRequestFactory(clubItemSearchParameters).PerformRequestAsync();
         }
     }
 }

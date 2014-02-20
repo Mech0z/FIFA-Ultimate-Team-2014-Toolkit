@@ -47,5 +47,7 @@
         public const string RemoveFromTradePile = "trade/{0}";
 
         public const string PileSize = "clientdata/pileSize";
+
+        public const string ClubItems = "club";
     }
 }

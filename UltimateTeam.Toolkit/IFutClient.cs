@@ -16,6 +16,8 @@ namespace UltimateTeam.Toolkit
 
         Task<AuctionResponse> PlaceBidAsync(AuctionInfo auctionInfo, uint bidAmount = 0);
 
+        Task<Item> GetItemAsync(ItemData itemData);
+
         Task<Item> GetItemAsync(AuctionInfo auctionInfo);
 
         Task<byte[]> GetPlayerImageAsync(AuctionInfo auctionInfo);
@@ -45,5 +47,7 @@ namespace UltimateTeam.Toolkit
         Task<QuickSellResponse> QuickSellItemAsync(long itemId);
 
         Task<QuickSellResponse> QuickSellItemAsync(IEnumerable<long> itemId);
+
+        Task<ClubItemsResponse> GetClubItemsAsync(ClubItemSearchParameters clubItemSearchParameters);
     }
 }
