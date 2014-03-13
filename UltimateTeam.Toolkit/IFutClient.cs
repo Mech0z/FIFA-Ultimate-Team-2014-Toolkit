@@ -36,11 +36,17 @@ namespace UltimateTeam.Toolkit
 
         Task<ListAuctionResponse> ListAuctionAsync(AuctionDetails auctionDetails);
 
+        Task AddToWatchlistRequestAsync(AuctionInfo auctionInfo);
+
+        Task AddToWatchlistRequestAsync(IEnumerable<AuctionInfo> auctionInfo);
+
         Task RemoveFromWatchlistAsync(AuctionInfo auctionInfo);
 
         Task RemoveFromWatchlistAsync(IEnumerable<AuctionInfo> auctionInfo);
 
         Task RemoveFromTradePileAsync(AuctionInfo auctionInfo);
+
+        Task<SendItemToClubResponse> SendItemToClubAsync(ItemData itemData);
 
         Task<SendItemToTradePileResponse> SendItemToTradePileAsync(ItemData itemData);
 
@@ -49,5 +55,13 @@ namespace UltimateTeam.Toolkit
         Task<QuickSellResponse> QuickSellItemAsync(IEnumerable<long> itemId);
 
         Task<ClubItemsResponse> GetClubItemsAsync(ClubItemSearchParameters clubItemSearchParameters);
+
+        Task<ConsumablesResponse> GetConsumablesAsync();
+
+        Task<byte[]> GetClubImageAsync(AuctionInfo auctionInfo);
+        
+        Task<byte[]> GetNationImageAsync(Item item);
+
+        Task<byte> ReListAsync();
     }
 }
