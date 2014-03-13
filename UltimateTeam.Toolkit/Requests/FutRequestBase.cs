@@ -11,7 +11,7 @@ namespace UltimateTeam.Toolkit.Requests
 {
     public abstract class FutRequestBase
     {
-        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings { MissingMemberHandling = MissingMemberHandling.Error };
+        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings { MissingMemberHandling = MissingMemberHandling.Ignore };
 
         private string _phishingToken;
 
